@@ -1,0 +1,22 @@
+{
+    "name": "lyapisov/zuzex-test",
+    "authors": [
+        {
+            "name": "Lyapisov Dmitry",
+            "email": "lyapisov@rambler.ru"
+        }
+    ],
+    "require": {
+        "symfony/dotenv": "^5.1",
+        "symfony/finder": "^5.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Scan\\": "src/Scan",
+            "Test\\": "test/"
+        }
+    }
+}
