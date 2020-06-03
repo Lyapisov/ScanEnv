@@ -8,7 +8,7 @@ connect-php: ## Connect php
 	docker-compose exec backend-php-cli bash
 
 run-tests: ## Runs phpunit
-	docker-compose run --rm backend-php-cli vendor\bin\phpunit
+	docker-compose run --rm backend-php-cli vendor/bin/phpunit test/Scan/Env/GetEnvTest.php
 
 initialize-locally: ## Initialize project locally
 	docker-compose pull

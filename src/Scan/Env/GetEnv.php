@@ -12,18 +12,10 @@ use Symfony\Component\Dotenv\Dotenv;
  */
 class GetEnv
 {
-    public function getEnvAll():void
+    public function getEnvAll():array
     {
         $env = new Dotenv();
         $env->load('.env');
-    }
-
-    public function validateQuery(string $query)
-    {
-        $query = strtoupper($query);
-        if (!$query) {
-            return null;
-        }
-        return $_ENV[$query];
+        return $_ENV;
     }
 }

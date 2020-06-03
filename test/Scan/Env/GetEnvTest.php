@@ -9,7 +9,7 @@ use Scan\Env\MyEnv;
 
 final class GetEnvTest extends TestCase
 {
-    public function testSuccessfulWithString():void
+    public function testSuccessful():void
     {
         $env = new MyEnv();
         $value = "GLOBAL_FIRST";
@@ -17,27 +17,21 @@ final class GetEnvTest extends TestCase
         $this->assertEquals($response, 'smile');
     }
 
-    public function testSuccessfulWithInt():void
+    public function testSuccessfulPassingLowerCaseQuery():void
     {
         $env = new MyEnv();
-        $value = "GLOBAL_SECONd";
+        $value = "global_second";
         $response = $env->get($value);
         $this->assertEquals($response, '1298_22');
     }
 
-    public function testWithoutValue():void
+    public function testPassingEmptyQuery():void
     {
         $env = new MyEnv();
         $value = "";
-        $response = $env->get($value);
-        $this->assertEquals($response, null);
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Query can not be blank!');
+        $env->get($value);
     }
 
-//    public function testIncorrectValue():void
-//    {
-//        $env = new MyEnv();
-//        $value = "194";
-//        $response = $env->get($value);
-//        $this->assertEquals($response, null);
-//    }
 }
