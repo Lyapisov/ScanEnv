@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Scan\Env;
 
-use Exception;
 use Webmozart\Assert\Assert;
 
 /**

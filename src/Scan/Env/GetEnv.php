@@ -10,7 +10,7 @@ use Symfony\Component\Dotenv\Dotenv;
  * Class GetEnv
  * Класс для парсинга .env файла
  */
-class GetEnv
+final class GetEnv
 {
     public function getEnvAll():array
     {
