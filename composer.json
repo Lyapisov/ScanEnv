@@ -1,5 +1,6 @@
 {
     "name": "lyapisov/zuzex-test",
+    "description": "env scanner",
     "authors": [
         {
             "name": "Lyapisov Dmitry",
