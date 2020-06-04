@@ -9,29 +9,43 @@ use Scan\Env\MyEnv;
 
 final class GetEnvTest extends TestCase
 {
-    public function testSuccessful():void
+    public function testSuccessfulWithStringValue():void
     {
         $env = new MyEnv();
-        $value = "GLOBAL_FIRST";
-        $response = $env->get($value);
+        $nameConst = "GLOBAL_FIRST";
+        $response = $env->get($nameConst);
         $this->assertEquals($response, 'smile');
+    }
+
+    public function testSuccessfulWithIntValue():void
+    {
+        $env = new MyEnv();
+        $nameConst = "GLOBAL_SECOND";
+        $response = $env->get($nameConst);
+        $this->assertEquals($response, '1298_22');
     }
 
     public function testSuccessfulPassingLowerCaseQuery():void
     {
         $env = new MyEnv();
-        $value = "global_second";
-        $response = $env->get($value);
-        $this->assertEquals($response, '1298_22');
+        $nameConst = "global_first";
+        $response = $env->get($nameConst);
+        $this->assertEquals($response, 'smile');
     }
 
     public function testPassingEmptyQuery():void
     {
         $env = new MyEnv();
-        $value = "";
+        $nameConst = "";
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Query can not be blank!');
-        $env->get($value);
+        $env->get($nameConst);
     }
-
+    public function testConstantsDoNotExist():void
+    {
+        $env = new MyEnv();
+        $nameConst = "GLOBAL";
+        $response = $env->get($nameConst);
+        $this->assertEquals($response, null);
+    }
 }
